@@ -44,7 +44,7 @@ docker run --rm quantum-shield ./quantum_shield --benchmark 1000
 *Outputs detailed CSV results to `benchmark_results.csv`.*
 
 ## Technical Details
-For a deep dive into the architecture, cryptographic parameters, and protocol specification, please refer to the [Technical Documentation](TECHNICAL_DOCUMENTATION.md).
+For a deep dive into the architecture details: [Technical Documentation](TECHNICAL_DOCUMENTATION.md).
 
 ---
 *Developed for the Next-Gen Network Security Initiative.*
