@@ -3,7 +3,7 @@
 ## Overview
 HyKEX C++20 prototype designed to secure communications against future quantum "Harvest Now, Decrypt Later" threats. It implements a **Hybrid Key Exchange** mechanism, combining  **X25519** (Elliptic Curve) with **ML-KEM-768**. 
 
-The system negotiates a shared secret over a standard TCP connection and establishes an authenticated encrypted channel using **AES-256-GCM**. It is built for performance, security, and simplicity, utilizing a custom binary wire protocol.
+The system negotiates a shared secret over a standard TCP connection and establishes an authenticated encrypted channel using **AES-256-GCM**. 
 
 ## Quick Start
 
