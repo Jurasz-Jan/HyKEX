@@ -1,17 +1,11 @@
 # Technical Architecture: Quantum-Shield 6G
 
-**Status**: Prototype / Active Development
-**Context**: Next-Gen Network Security (Post-Quantum Cryptography)
+## 1. Summary
 
----
-
-## 1. Executive Summary
-
-**Quantum-Shield 6G** is a secure communication prototype designed to mitigate the **Harvest Now, Decrypt Later** threat. Adversaries storing encrypted traffic today could retroactively decrypt it using future quantum computers.
-
-To prevent this, the system implements a **Hybrid Key Exchange (HKE)** that layers two distinct cryptographic primitives:
-1.  **Classic Layer (ECC X25519)**: Elliptic Curve Diffie-Hellman. Fast, mature, and secure against all known conventional attacks.
-2.  **Quantum Layer (ML-KEM-768)**: A lattice-based mechanisms (formerly Kyber). Specifically designed to resist Shor’s algorithm, which powers quantum attacks.
+**HyKEX** ecure communication prototype designed to mitigate the **Harvest Now, Decrypt Later** threat. 
+To prevent this, the system implements a **Hybrid Key Exchange** that layers two distinct cryptographic primitives:
+1.  **Classic Layer (ECC X25519)**: Elliptic Curve Diffie-Hellman
+2.  **Quantum Layer (ML-KEM-768)**: A lattice-based mechanisms designed to resist Shor’s algorithm
 
 Security is achieved through the "weakest link" principle: breaking the session key requires breaking *both* the elliptic curve discrete logarithm problem AND the lattice learning-with-errors problem.
 
