@@ -1,4 +1,4 @@
-# Technical Architecture: Quantum-Shield 6G
+# Technical Architecture: HyKEX
 
 ## 1. Summary
 
