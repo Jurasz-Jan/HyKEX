@@ -1,7 +1,9 @@
 # Hybrid Key Exchange
 
 ## Overview
-HyKEX C++20 prototype designed to secure communications against future quantum "Harvest Now, Decrypt Later" threats. It implements a **Hybrid Key Exchange** mechanism, combining  **X25519** (Elliptic Curve) with **ML-KEM-768**. 
+HyKEX C++20 prototype based on parts of TLS 1.3 designed to secure communications against future quantum "Harvest Now, Decrypt Later" threats. It implements a **Hybrid Key Exchange** mechanism, combining  **X25519** (Elliptic Curve) with **ML-KEM-768**. 
+
+Due to not supporting PKI, this is **susceptible to MITM** attacks.
 
 The system negotiates a shared secret over a standard TCP connection and establishes an authenticated encrypted channel using **AES-256-GCM**. 
 
