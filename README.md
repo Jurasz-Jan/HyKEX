@@ -32,7 +32,6 @@ docker run --rm -p 9999:9999 quantum-shield ./quantum_shield --server 9999
 ### Client
 Connects to the server, performs the Hybrid Handshake, and exchanges an encrypted message.
 ```bash
-# Note: Use --network host or the container IP if running separate containers
 docker run --rm --network host quantum-shield ./quantum_shield --client 127.0.0.1 9999
 ```
 
