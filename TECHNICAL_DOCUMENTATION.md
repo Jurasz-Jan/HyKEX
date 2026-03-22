@@ -5,9 +5,9 @@
 **HyKEX** ecure communication prototype designed to mitigate the **Harvest Now, Decrypt Later** threat. 
 To prevent this, the system implements a **Hybrid Key Exchange** that layers two distinct cryptographic primitives:
 1.  **Classic Layer (ECC X25519)**: Elliptic Curve Diffie-Hellman
-2.  **Quantum Layer (ML-KEM-768)**: A lattice-based mechanisms designed to resist Shor’s algorithm
+2.  **Quantum Layer (ML-KEM-768)**: A lattice-based LWE mechanisms designed to resist Shor’s algorithm
 
-Security is achieved through the "weakest link" principle: breaking the session key requires breaking *both* the elliptic curve discrete logarithm problem AND the lattice learning-with-errors problem.
+Breaking the session key requires breaking *both* the elliptic curve discrete logarithm problem AND the lattice learning-with-errors problem.
 
 ---
 
@@ -16,24 +16,24 @@ Security is achieved through the "weakest link" principle: breaking the session 
 The system relies on two fundamentally different mathematical problems.
 
 ### The Classic Layer: Elliptic Curve Cryptography (X25519)
-*   **The Mechanism**: Uses points on the Curve25519 structure.
-*   **The Math**: Relies on the **Discrete Logarithm Problem**. Given a starting point $G$ and an endpoint $P = nG$, it is computationally infeasible for classical computers to determine the scalar $n$ (the private key).
-*   **The Quantum Threat**: Quantum computers using **Shor’s Algorithm** can solve this problem efficiently by finding the period of the function, effectively recovering the private key in polynomial time.
+*   Uses points on the Curve25519 structure.
+*   Relies on the **Discrete Logarithm Problem**. Given a starting point $G$ and an endpoint $P = nG$, it is computationally infeasible for classical computers to determine the scalar $n$ (the private key).
+*   Quantum computers using **Shor’s Algorithm** can solve this problem efficiently by finding the period of the function, effectively recovering the private key in polynomial time.
 
 ### The Quantum Layer: Lattice-Based Cryptography (ML-KEM)
-*   **The Mechanism**: Uses high-dimensional geometric structures called lattices.
-*   **The Math**: Relies on the **Learning With Errors (LWE)** problem/Module-LWE.
+*   Uses high-dimensional geometric structures called lattices.
+*   Relies on the **Learning With Errors (LWE)** problem/Module-LWE.
     *   Think of this as solving a system of linear equations, but with small, random "noise" added to the solution.
     *   While simple linear algebra is easy to solve, the added noise makes recovering the exact solution computationally exhaustive, even for quantum computers.
-*   **Why It Works**: There is currently no known quantum algorithm that can efficiently "denoise" or find the short vector in these high-dimensional lattices.
+*   There is currently no known quantum algorithm that can efficiently "denoise" or find the short vector in these high-dimensional lattices.
 
 ---
 
-## 3. The Protocol: "Life of a Connection"
+## 3. Protocol
 
 The system implements a specific handshake flow to establish a shared `Session_Key`.
 
-### Phase 1: Key Generation (Setup)
+### Phase 1: Key Generation (Client)
 The **Client** generates ephemeral keypairs for both algorithms:
 1.  **X25519**: `priv_c` (32 bytes), `pub_c` (32 bytes).
 2.  **ML-KEM-768**: `priv_q` (2400 bytes), `pub_q` (1184 bytes).
@@ -83,7 +83,7 @@ sequenceDiagram
     Note right of Server: Secure Channel Established
 ```
 
-### Data Packet Structure (Binary Protocol)
+### Data Packet Structure
 
 This diagram visualizes the actual data layout of the handshake messages on the wire.
 
